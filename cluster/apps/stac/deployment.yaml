@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: stac
-          image: soulsbros/stac:test
+          image: steeven9/el-impostor:test
           ports:
             - containerPort: 3000
           readinessProbe:

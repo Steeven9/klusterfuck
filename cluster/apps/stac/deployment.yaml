@@ -5,7 +5,13 @@ metadata:
   namespace: stac
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: stac
   template:
+    metadata:
+      labels:
+        app: stac
     spec:
       containers:
         - name: stac

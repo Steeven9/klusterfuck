@@ -3,10 +3,12 @@ kind: Service
 metadata:
   name: stac
   namespace: stac
+  labels:
+    app: stac
 spec:
   type: ClusterIP
   selector:
-    deployment.kubernetes.io/pod-name: stac
+    app: stac
   ports:
     - port: 3001
       targetPort: 3000

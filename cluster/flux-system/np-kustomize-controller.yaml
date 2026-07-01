@@ -1,0 +1,29 @@
+# Network policy for kustomize-controller: API server and source-controller access
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kustomize-controller
+  namespace: flux-system
+spec:
+  podSelector:
+    matchLabels:
+      app: kustomize-controller
+  policyTypes:
+    - Egress
+  egress:
+    # Allow communication with source-controller for artifact fetching
+    - to:
+        - podSelector:
+            matchLabels:
+              app: source-controller
+      ports:
+        - protocol: TCP
+          port: 9090
+        - protocol: TCP
+          port: 80
+    # Allow communication with the Kubernetes API server
+    - ports:
+        - protocol: TCP
+          port: 443
+        - protocol: TCP
+          port: 6443

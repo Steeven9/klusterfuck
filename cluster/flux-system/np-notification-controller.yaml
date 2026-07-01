@@ -1,0 +1,29 @@
+# Network policy for notification-controller: webhooks and alert destinations
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: notification-controller
+  namespace: flux-system
+spec:
+  podSelector:
+    matchLabels:
+      app: notification-controller
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Allow inbound webhook traffic from external sources
+    - ports:
+        - protocol: TCP
+          port: 9292
+  egress:
+    # Allow HTTPS to notification providers (Slack, Teams, PagerDuty, etc.)
+    - ports:
+        - protocol: TCP
+          port: 443
+    # Allow Kubernetes API server access
+    - ports:
+        - protocol: TCP
+          port: 443
+        - protocol: TCP
+          port: 6443

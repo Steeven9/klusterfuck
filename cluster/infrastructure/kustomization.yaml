@@ -4,4 +4,5 @@ metadata:
   name: infrastructure
 resources:
   - sources/helmrepos.yaml
-  - storage/kustomization.yaml
+  - storage/nfs-provisioner/helmrelease.yaml
+  - storage/nfs-provisioner/namespace.yaml

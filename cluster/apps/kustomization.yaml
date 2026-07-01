@@ -3,7 +3,4 @@ kind: Kustomization
 metadata:
   name: apps
 resources:
-  - stac/deployment.yaml
-  - stac/namespace.yaml
-  - stac/service.yaml
-  - stac/ingressRoute.yaml
+  - stac/

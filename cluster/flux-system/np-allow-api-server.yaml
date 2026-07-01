@@ -10,7 +10,6 @@ spec:
     - Egress
   egress:
     # Allow HTTPS traffic on common API server ports
-    # Replace with your API server IP/CIDR for stricter control
     - ports:
         - protocol: TCP
           port: 443

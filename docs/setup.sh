@@ -6,8 +6,11 @@ sudo apt-get update && sudo apt-get install -y nfs-common
 
 # node 1
 
-sudo ufw allow 6443
-sudo ufw allow 10250 #TODO necessary?
+sudo ufw allow 6443/tcp
+sudo ufw allow 2379:2380/tcp
+sudo ufw allow 10250/tcp
+sudo ufw allow 10257/tcp
+sudo ufw allow 10259/tcp
 
 export K3S_TOKEN="replace-with-a-strong-secret"
 export NODE01_IP="192.168.178.67"
@@ -19,11 +22,14 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server \
   K3S_TOKEN="${K3S_TOKEN}" sh -
 
 # check, should be ready
-sudo kubectl get nodes
+kubectl get nodes
 
 # node 2
 
-sudo ufw allow 10250
+sudo ufw allow 10250/tcp
+sudo ufw allow 10256/tcp
+sudo ufw allow 30000:32767/tcp
+sudo ufw allow 30000:32767/udp
 
 export K3S_TOKEN="replace-with-a-strong-secret"
 export NODE01_IP="192.168.178.67"
@@ -32,9 +38,7 @@ curl -sfL https://get.k3s.io | \
   K3S_URL="https://${NODE01_IP}:6443" \
   K3S_TOKEN="${K3S_TOKEN}" sh -
 
-# check on node 1, should be both
-sudo kubectl get nodes
-
+kubectl get nodes
 
 # on devbox
 
@@ -62,8 +66,3 @@ flux bootstrap github \
 
 flux check
 kubectl -n flux-system get pods
-
-# in the repo
-mkdir -p cluster/infrastructure/sources
-mkdir -p cluster/infrastructure/storage/nfs-provisioner
-mkdir -p cluster/apps

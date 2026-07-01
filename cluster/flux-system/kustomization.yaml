@@ -5,3 +5,9 @@ resources:
   - gotk-sync.yaml
   - infrastructure.yaml
   - apps.yaml
+  - np-allow-api-server.yaml
+  - np-allow-dns.yaml
+  - np-default-deny.yaml
+  - np-kustomize-controller.yaml
+  - np-notification-controller.yaml
+  - np-source-controller.yaml

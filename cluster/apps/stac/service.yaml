@@ -3,14 +3,8 @@ kind: Service
 metadata:
   name: stac
   namespace: stac
-  labels:
-    app: stac
 spec:
-  type: ClusterIP
   selector:
     app: stac
   ports:
-    - port: 3001
-      targetPort: 80
-      protocol: TCP
-      name: http
+    - port: 80

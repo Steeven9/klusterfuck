@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stac
+  namespace: stac
+spec:
+  type: ClusterIP
+  selector:
+    deployment.kubernetes.io/pod-name: stac
+  ports:
+    - port: 3001
+      targetPort: 3000
+      protocol: TCP
+      name: http

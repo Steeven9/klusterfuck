@@ -11,6 +11,6 @@ spec:
     app: stac
   ports:
     - port: 3001
-      targetPort: 3000
+      targetPort: 80
       protocol: TCP
       name: http

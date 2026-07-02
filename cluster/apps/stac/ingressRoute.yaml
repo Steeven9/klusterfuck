@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`stac.localhost`)
+    - match: Host(`test.soulsbros.ch`)
       kind: Rule
       services:
         - name: stac

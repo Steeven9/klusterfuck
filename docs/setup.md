@@ -17,6 +17,7 @@ sudo ufw allow 10250/tcp
 sudo ufw allow 10257/tcp
 sudo ufw allow 10259/tcp
 
+# to generate the token: openssl rand -base64 32
 export K3S_TOKEN="replace-with-a-strong-secret"
 export NODE01_IP="192.168.178.67"
 
@@ -49,7 +50,7 @@ curl -sfL https://get.k3s.io | \
 kubectl get nodes
 ```
 
-On your local machine
+On your local machine, extract the kubeconfig to connect to the cluster
 
 ```bash
 brew install kubectl fluxcd/tap/flux
@@ -64,7 +65,7 @@ chmod 600 ~/.kube/config
 kubectl get nodes  
 ```
 
-This part needs a GitHub access token with Contents (r/w) and Administration (r/w) scopes on the repo
+Bootstrap the gitops repo (this one) - this part needs a GitHub access token with Contents (r/w) and Administration (r/w) scopes on the repo
 
 ```bash
 export GITHUB_TOKEN="ghp_xxxxxxxxxxxx"

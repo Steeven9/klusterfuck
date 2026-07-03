@@ -53,7 +53,7 @@ kubectl get nodes
 On your local machine, extract the kubeconfig to connect to the cluster
 
 ```bash
-brew install kubectl fluxcd/tap/flux
+brew install kubectl fluxcd/tap/flux k9s
 
 export NODE01_IP="192.168.178.67"
 mkdir -p ~/.kube

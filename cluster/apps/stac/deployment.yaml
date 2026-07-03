@@ -14,12 +14,21 @@ spec:
         app: stac
     spec:
       securityContext:
+        runAsNonRoot: true
         runAsUser: 1000
-        runAsGroup: 3000
+        runAsGroup: 1000
         fsGroup: 2000
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
       containers:
         - name: stac
           image: soulsbros/stac:arm
+          env:
+            - name: TZ
+              value: Europe/Zurich
           ports:
             - containerPort: 3000
           readinessProbe:

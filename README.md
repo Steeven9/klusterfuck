@@ -56,5 +56,6 @@ Note: I had to disable `ufw` entirely because I cannot figure out which ports k8
 ## Pain points
 
 - configuration bloat: currently sitting at 6400 lines of YAML just for a single webapp
+- configuration drift: if I add e.g. a new security feature for a deployment, I have to remember to manually add it to the other ones as well
 - different platform: Raspberry Pis need dedicated images built for arm64, which means adding steps in the CI
 - resource limits: `kubectl get pods -A` takes 13 seconds to execute on the Pi itself, and the system as a whole feels way slower (SSHing, running commands, etc.)

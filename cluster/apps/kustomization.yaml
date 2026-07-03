@@ -9,3 +9,9 @@ resources:
   - stac/ingressRoute.yaml
   - stac/np-allow-ingress.yaml
   - stac/np-default-deny.yaml
+  - momnt/deployment.yaml
+  - momnt/namespace.yaml
+  - momnt/service.yaml
+  - momnt/ingressRoute.yaml
+  - momnt/np-allow-ingress.yaml
+  - momnt/np-default-deny.yaml
